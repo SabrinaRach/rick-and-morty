@@ -1,3 +1,5 @@
+import { createCharacterCard } from "./components/CharacterCard/CharacterCard.js";
+
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
@@ -12,3 +14,17 @@ const pagination = document.querySelector('[data-js="pagination"]');
 const maxPage = 1;
 const page = 1;
 const searchQuery = "";
+
+
+// Fetch Data from API
+
+export const fetchCharacters = async () => {
+  const response = await fetch("https://rickandmortyapi.com/api/character");
+  const data = await response.json();
+  return(data);
+}
+fetchCharacters();
+
+// call the createCharacterCard function and append its return value to the existing cardContainer.
+;
+cardContainer.append(createCharacterCard());
