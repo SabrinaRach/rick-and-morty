@@ -3,6 +3,12 @@
 @import "components/NavButton/NavButton.css";
 @import "components/NavPagination/NavPagination.css";
 
+/*eigene Font für title */
+@font-face {
+  font-family: "rickandmortyfont";
+  src: url("./assets/get_schwifty.ttf");
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,7 +17,7 @@
 
 :root {
   --color-primary: rgb(51, 51, 51);
-  --color-secondary: #f6f6f6;
+  --color-secondary: rgba(201, 195, 195, 0.3); /*0.3 für transparency */
   --font-family: system-ui;
 }
 
@@ -19,6 +25,11 @@ body {
   font-family: var(--font-family);
   color: var(--color-primary);
   padding: 20px;
+  background-image: url("./assets/StockCake-Gruner_wirbelnder_Abgrund-812162-standard.jpg");
+   background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 main {
@@ -28,5 +39,7 @@ main {
 }
 
 .title {
+  font-family: "rickandmortyfont";
+  color:beige;
   padding: 10px 0;
 }
