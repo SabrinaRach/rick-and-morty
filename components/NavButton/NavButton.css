@@ -1,7 +1,35 @@
-.button {
-  border: none;
+.navigation {
+  display: grid;
+  justify-content: center;
 }
 
-.button:hover {
+@keyframes enlarge-buttons {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.button {
+  border: none;
   background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-family: "fontfortext";
+  opacity: 1;
+}
+
+.button-click
+{
+  animation: enlarge-buttons 2s ease;
+}
+
+
+.button:hover {
+  background-color: #88e23b;
+  color: var(--color-secondary);
 }

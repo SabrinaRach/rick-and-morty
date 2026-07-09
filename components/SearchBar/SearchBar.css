@@ -18,6 +18,11 @@
   color: var(--color-primary);
 }
 
+.search-bar__input::placeholder {
+  color: var(--color-primary);
+  opacity: 0.8;
+}
+
 .search-bar__button {
   border: none;
   background-color: transparent;

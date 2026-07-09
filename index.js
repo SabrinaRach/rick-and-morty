@@ -42,19 +42,32 @@ fetchCharacters();
 // EventListener für Paginierung
 
 prevButton.addEventListener("click", () => {
+
   // wenn aktuelle Seitenanzahl > 1, gehe auf die Seite davor
   if (page > 1) {
     page--;
+    prevButton.classList.add("button-click");
     fetchCharacters();
   }
+});
+
+// wenn Button "animationed" ist, dann entferne die Klasse. Beim erneuten Klick startet die Animation wieder neu
+prevButton.addEventListener("animationend", () => {
+  prevButton.classList.remove("button-click");
 });
 
 nextButton.addEventListener("click", () => {
   // wenn aktuelle Seitenzahl > 1 und < 42 (maxPage), gehe zur nächsten Seite
   if (page < maxPage) {
     page++;
+    nextButton.classList.add("button-click");
     fetchCharacters();
   }
+});
+
+// wenn Button "animationed" ist, dann entferne die Klasse. Beim erneuten Klick startet die Animation wieder neu
+nextButton.addEventListener("animationend", () => {
+  nextButton.classList.remove("button-click");
 });
 
 // The Search Bar
@@ -64,3 +77,6 @@ searchBar.addEventListener("submit", (event) => {
   page = 1; // Set page to 1 when a new search is submitted.
   fetchCharacters();
 });
+
+
+// Button Animation
