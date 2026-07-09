@@ -44,6 +44,7 @@ prevButton.addEventListener("click", () => {
     page--;
     fetchCharacters();
   }
+  pagination.textContent = `${page} / ${maxPage}`
 });
 
 nextButton.addEventListener("click", () => {
@@ -52,4 +53,7 @@ nextButton.addEventListener("click", () => {
     page++;
     fetchCharacters();
   }
+  pagination.textContent = `${page} / ${maxPage}`
 });
+
+
