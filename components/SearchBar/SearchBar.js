@@ -11,7 +11,7 @@ export function SearchBar(onSubmit) {
   const form = document.createElement("form");
   form.classList.add("search-bar");
   form.dataset.js = "search-bar";
-  form.action = "";
+  form.action = " "; /*eigentlich obsolet, da leer, d.h. Formulardaten werden an aktuelle Seite gesendet */
 
   const input = document.createElement("input");
   input.name = "query";
