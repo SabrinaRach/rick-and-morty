@@ -15,15 +15,17 @@ const pagination = document.querySelector('[data-js="pagination"]');
 // Use the state variable page to keep track of the current page index.
 export let maxPage = 42;
 export let page = 1;
-const searchQuery = "";
+export let searchQuery = "";
 
 // Fetch Data from API
 
 export const fetchCharacters = async () => {
   const response = await fetch(
-    `https://rickandmortyapi.com/api/character?page=${page}`,
+    `https://rickandmortyapi.com/api/character?page=${page}&name=${searchQuery}`,
   );
   const data = await response.json();
+
+  maxPage = data.info.pages;
 
   cardContainer.innerHTML = ""; // empty container before adding new cards
 
@@ -32,6 +34,7 @@ export const fetchCharacters = async () => {
     const card = createCharacterCard(character);
     cardContainer.append(card);
   });
+  pagination.textContent = `${page} / ${maxPage}`;
 };
 
 fetchCharacters();
@@ -44,7 +47,6 @@ prevButton.addEventListener("click", () => {
     page--;
     fetchCharacters();
   }
-  pagination.textContent = `${page} / ${maxPage}`
 });
 
 nextButton.addEventListener("click", () => {
@@ -53,7 +55,12 @@ nextButton.addEventListener("click", () => {
     page++;
     fetchCharacters();
   }
-  pagination.textContent = `${page} / ${maxPage}`
 });
 
-
+// The Search Bar
+searchBar.addEventListener("submit", (event) => {
+  event.preventDefault();
+  searchQuery = event.target.elements.query.value;
+  page = 1; // Set page to 1 when a new search is submitted.
+  fetchCharacters();
+});

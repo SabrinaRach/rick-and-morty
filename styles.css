@@ -40,6 +40,10 @@ main {
 
 .title {
   font-family: "rickandmortyfont";
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  z-index: 1;
   color:beige;
   padding: 10px 0;
 }
