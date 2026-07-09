@@ -1,15 +1,17 @@
 import { createCharacterCard } from "./components/CharacterCard/CharacterCard.js";
 import { NavButton } from "./components/NavButton/NavButton.js";
+import { SearchBar } from "./components/SearchBar/SearchBar.js";
 
+// DOM Elements
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]',
 );
-const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
+const main = document.querySelector('[data-js="main"]');
 
 // States
 // Use the state variable page to keep track of the current page index.
@@ -17,6 +19,17 @@ export let maxPage = 42;
 export let page = 1;
 export let searchQuery = "";
 
+
+// The Search Bar
+const searchBarElement = SearchBar((query) => {
+  searchQuery = query;
+  page = 1;
+  fetchCharacters();
+});
+
+main.prepend(searchBarElement); //da append die SearchBar als letztes child in Main einfügt, umgehen wir dies mit prepend
+
+//Functions
 // Fetch Data from API
 
 export const fetchCharacters = async () => {
@@ -37,7 +50,11 @@ export const fetchCharacters = async () => {
   pagination.textContent = `${page} / ${maxPage}`;
 };
 
-fetchCharacters();
+
+
+
+
+
 
 // EventListener für Paginierung
 
@@ -70,13 +87,7 @@ nextButton.addEventListener("animationend", () => {
   nextButton.classList.remove("button-click");
 });
 
-// The Search Bar
-searchBar.addEventListener("submit", (event) => {
-  event.preventDefault();
-  searchQuery = event.target.elements.query.value;
-  page = 1; // Set page to 1 when a new search is submitted.
-  fetchCharacters();
-});
+//App starten
+fetchCharacters();
 
 
-// Button Animation
