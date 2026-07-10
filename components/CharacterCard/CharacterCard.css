@@ -13,6 +13,26 @@
   padding: 7px;
 }
 
+@keyframes pulsatingCard {
+0% {
+  box-shadow: 0 0 20px rgba(136, 226, 59, 0.0);
+  border-color: #39ff14;
+}
+50% {
+  box-shadow: 0 0 20px rgba(136, 226, 59, 1.0);
+  border-color: #219c0b; 
+}
+100% {
+  box-shadow: 0 0 20px rgba(136, 226, 59, 0.0);
+  border-color: #39ff14;
+}
+}
+
+.card:hover {
+animation: pulsatingCard 2.5s infinite;
+transform: translateY(-5px) scale(1.01); /*translateY ändert scale auf der Y-Achse nach oben um 5px*/
+}
+
 .card__info {
   display: grid;
   grid-template-columns: auto 1fr;
