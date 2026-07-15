@@ -3,6 +3,25 @@
 @import "components/NavButton/NavButton.css";
 @import "components/NavPagination/NavPagination.css";
 
+/* Media Queries für responsives Design */
+/*Tablet */
+@media (min-width: 900px) {
+  .card-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/*Desktop */
+@media (min-width: 1200px) {
+  .card-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
 /*eigene Font für title */
 @font-face {
   font-family: "rickandmortyfont";
