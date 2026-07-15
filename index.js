@@ -9,6 +9,8 @@ import { createCharacterCard } from "./components/CharacterCard/CharacterCard.js
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector('[data-js="search-bar-container"]',);
 const main = document.querySelector('[data-js="main"]');
+const title = document.querySelector('[data-js="title"]');
+
 
 // States
 // Use the state variable page to keep track of the current page index.
@@ -86,5 +88,13 @@ document.body.append(navElement);
 
 //App starten
 fetchCharacters();
+
+//Wenn Title geklickt wird, dann lädt die Seite neu, Searchbar wird geleert
+title.addEventListener("click", () => {
+  searchBarElement.querySelector(".search-bar__input").value = ""; // sucht das Element, das zu ".search-bar__input passt" und löscht den Inhalt des Eingabefeldes
+  page = 1;
+  searchQuery = "";
+  fetchCharacters();
+});
 
 
